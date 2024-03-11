@@ -1,0 +1,45 @@
+/* Styles for Timesheet Form */
+.timesheet-form {
+    border: 2px solid;
+    border-radius: 5px;
+    border-color: var(--background-color2);
+    padding: 20px;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .timesheet-form h2 {
+    margin-bottom: 10px;
+  }
+  
+  .timesheet-form label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .timesheet-form input[type="text"],
+  .timesheet-form input[type="date"],
+  .timesheet-form input[type="number"] {
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .timesheet-form button[type="submit"],
+  .timesheet-form button[type="button"] {
+    padding: 8px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .timesheet-form button[type="submit"]:hover,
+  .timesheet-form button[type="button"]:hover {
+    background-color: #0056b3;
+  }
+  
