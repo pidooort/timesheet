@@ -94,7 +94,7 @@ function TimesheetManager() {
     <div className='timesheet-div'>
       <h3>Employee Timesheet Management</h3>
       <form className='timesheet-form' onSubmit={addTimesheetEntry} >
-        <h2>Employee Information...</h2>
+        <h2>Employee Information</h2>
 
         <label>
           Date:
