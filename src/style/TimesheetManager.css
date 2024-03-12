@@ -1,97 +1,38 @@
-/* Styles for Timesheet Manager */
-
-
-
-.timesheet-div {
-  background-color: #3f3f3e;
-  color: white;
-}
-
-.timesheet-manager-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-}
-
-.timesheet-form {
-  border: 3px solid;
-  border-block-color: #007bff;
-  border-radius: 5px;
-  padding: 20px;
+.container {
   margin-top: 20px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-.timesheet-form h2 {
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form input,
+.form select {
+  width: 100%;
   margin-bottom: 10px;
 }
 
-.timesheet-form label {
-  display: block;
-  text-align: left; 
-  margin-bottom: 10px;
+.form button {
+  margin-top: 10px;
 }
 
-.timesheet-form input[type="text"],
-.timesheet-form input[type="date"],
-.timesheet-form input[type="number"] {
-  width: calc(50% - 20px);
-  padding: 5px;
-  margin-left: 5px;
+.entries {
+  margin-top: 20px;
 }
 
-.timesheet-form button[type="submit"],
-.timesheet-form button[type="button"] {
-  padding: 8px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  margin-left: 10px;
-}
-
-.timesheet-form button[type="submit"]:hover,
-.timesheet-form button[type="button"]:hover {
-  background-color: #0056b3;
-}
-
-.timesheet-entries-table {
+.entries table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.timesheet-entries-table th,
-.timesheet-entries-table td {
-  border: 1px solid #ccc;
+.entries th,
+.entries td {
   padding: 8px;
-  text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 
-.timesheet-entries-table th {
-  background-color: #f0f0f0;
-}
-
-.timesheet-entries-table tr:hover {
-  background-color: #f9f9f9;
-}
-
-.timesheet-entries-table button {
-  padding: 5px 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.timesheet-entries-table button:hover {
-  background-color: #0056b3;
-}
-
-.thead {
-  padding: 15px;
+.entries th {
+  background-color: #f2f2f2;
 }
