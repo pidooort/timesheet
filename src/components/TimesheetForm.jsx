@@ -80,7 +80,7 @@ function TimesheetForm() {
 
   return (
     <div className='timesheet-div'>
-      <h3>Employee Timesheet </h3>
+      <h3>Employee Timesheet.... </h3>
       <form className='timesheet-form' onSubmit={addTimesheetEntry} >
         <h2>Employee Information</h2>
         <label>
