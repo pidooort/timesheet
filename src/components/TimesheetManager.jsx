@@ -1,188 +1,110 @@
 import React, { useState } from 'react';
-import "../style/TimesheetManager.css";
+import { TextField, Button, Container, Grid, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 
 function TimesheetManager() {
-
-  
-  const [timesheetEntries, setTimesheetEntries] = useState([]);
   const [employeeInfo, setEmployeeInfo] = useState({
-    name: '',
-    department: '',
-    // Add more fields as needed
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNumber: ''
   });
-  const [date, setDate] = useState('');
-  const [Time, setTime] = useState('');
-  const [timeOut, setTimeOut] = useState('');
 
-  const [hoursWorked, setHoursWorked] = useState('');
-  const [editIndex, setEditIndex] = useState(null);
+  const [timesheetEntries, setTimesheetEntries] = useState([]);
 
-  const handleEmployeeInfoChange = (e) => {
-    const { name, value } = e.target;
-    setEmployeeInfo({
-      ...employeeInfo,
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setEmployeeInfo(prevState => ({
+      ...prevState,
       [name]: value
-    });
+    }));
   };
 
-  const addTimesheetEntry = (e) => {
-    e.preventDefault();
-    const newEntry = {
-      date: date,
-      Time: Time,
-      timeOut: timeOut,
-      hoursWorked: hoursWorked
-
-    };
-    setTimesheetEntries([...timesheetEntries, { ...newEntry, ...employeeInfo }]);
-    setDate('');
-    setTime('');
-    setTimeOut('');
-    setHoursWorked('');
+  const handleAddEntry = () => {
+    setTimesheetEntries(prevEntries => [...prevEntries, { ...employeeInfo }]);
     setEmployeeInfo({
-      name: '',
-      department: ''
-      // Clear other employee info fields as needed
+      firstName: '',
+      lastName: '',
+      email: '',
+      phoneNumber: ''
     });
-
   };
 
-  const handleEdit = (index) => {
-    const entryToEdit = timesheetEntries[index];
-    setDate(entryToEdit.date);
-    setTime(entryToEdit.Time);
-    setTimeOut(entryToEdit.timeOut);
-    setHoursWorked(entryToEdit.hoursWorked);
-    setEmployeeInfo({
-      name: entryToEdit.name,
-      department: entryToEdit.department
-      // Set other employee info fields as needed
-    });
-    setEditIndex(index);
-  };
-
-  const handleUpdate = (index) => {
-    const updatedEntry = {
-      date: date,
-      Time: Time,
-      timeOut: timeOut,
-      hoursWorked: hoursWorked,
-      name: employeeInfo.name,
-      department: employeeInfo.department
-      // Set other employee info fields as needed
-    };
-    const updatedEntries = [...timesheetEntries];
-    updatedEntries[index] = updatedEntry;
-    setTimesheetEntries(updatedEntries);
-    setEditIndex(null);
-  };
-
-  const handleCancelEdit = () => {
-    setDate('');
-    setHoursWorked('');
-    setEmployeeInfo({
-      name: '',
-      department: ''
-      // Clear other employee info fields as needed
-    });
-    setEditIndex(null);
-
-  };
-
-  
   return (
-    <div className='timesheet-div'>
-      <h3>Employee Timesheet Management</h3>
-      <form className='timesheet-form' onSubmit={addTimesheetEntry} >
-        <h2>Employee Information</h2>
-
-        <label>
-          Date:
-          <input
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            required
-            style={{ marginLeft: '10px' }}
+    <Container maxWidth="md">
+      <Typography variant="h4" align="center" gutterBottom>
+        Timesheet Manager
+      </Typography>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            fullWidth
+            label="First Name"
+            name="firstName"
+            value={employeeInfo.firstName}
+            onChange={handleChange}
           />
-        </label>
-        <label>
-        Time:
-        <input
-          type="Time"
-          value={Time}
-          onChange={(e) => setTime(e.target.value)}
-          required
-          style={{ marginLeft: '10px' }}
-        />
-      </label>
-        <label>
-          Name:
-          <input
-            type="text"
-            name="name"
-            value={employeeInfo.name}
-            onChange={handleEmployeeInfoChange}
-            required
-            style={{ marginLeft: '10px' }}
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            fullWidth
+            label="Last Name"
+            name="lastName"
+            value={employeeInfo.lastName}
+            onChange={handleChange}
           />
-        </label>
-        <label>
-          Department:
-          <input
-            type="text"
-            name="department"
-            value={employeeInfo.department}
-            onChange={handleEmployeeInfoChange}
-            required
-            style={{ marginLeft: '10px' }}
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            fullWidth
+            label="Email"
+            name="email"
+            type="email"
+            value={employeeInfo.email}
+            onChange={handleChange}
           />
-        </label>
-        
-        {editIndex !== null ? (
-          <>
-            <button type="button" onClick={() => handleUpdate(editIndex)} style={{ marginLeft: '10px' }}>Update</button>
-            <button type="button" onClick={handleCancelEdit} style={{ marginLeft: '10px' }}>Cancel</button>
-          </>
-        ) : (
-          <button type="submit" style={{ marginLeft: '10px' }}>Add Entry</button>
-        )}
-      </form>
-      <h2>Timesheet Entries</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Department</th>
-            <th>Date</th>
-            <th>Time In</th>
-          </tr>
-        </thead>
-        <tbody>
-          {timesheetEntries.map((entry, index) => (
-            <tr key={index}>
-              <td>{entry.name}</td>
-              <td>{entry.department}</td>
-              <td>{entry.date}</td>
-              <td>{entry.Time}</td>
-              {editIndex === index && ( // Render Time Out input field only if editIndex matches the current index
-                <td>
-                  <input
-                    type="time"
-                    value={timeOut}
-                    onChange={(e) => setTimeOut(e.target.value)}
-                  />
-                </td>
-              )}
-              <td>
-                <button type="button" onClick={() => handleEdit(index)}>Edit</button>
-              
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            fullWidth
+            label="Phone Number"
+            name="phoneNumber"
+            value={employeeInfo.phoneNumber}
+            onChange={handleChange}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Button variant="contained" color="primary" onClick={handleAddEntry}>
+            Add Entry
+          </Button>
+        </Grid>
+      </Grid>
+      <br />
+      <Typography variant="h5" align="center" gutterBottom>
+        Timesheet Entries
+      </Typography>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>First Name</TableCell>
+              <TableCell>Last Name</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>Phone Number</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {timesheetEntries.map((entry, index) => (
+              <TableRow key={index}>
+                <TableCell>{entry.firstName}</TableCell>
+                <TableCell>{entry.lastName}</TableCell>
+                <TableCell>{entry.email}</TableCell>
+                <TableCell>{entry.phoneNumber}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Container>
   );
 }
 
