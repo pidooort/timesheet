@@ -80,8 +80,8 @@ function TimesheetManager() {
             name="department"
           >
 
-            <MenuItem value="Finance">ITSO BLDG 3</MenuItem>
-            <MenuItem value="Marketing">ITSO BLDG 5</MenuItem>
+            <MenuItem value="ITSO 3">ITSO BLDG 3</MenuItem>
+            <MenuItem value="ITSO 5">ITSO BLDG 5</MenuItem>
             {/* Add more departments as needed */}
           </Select>
         </FormControl>
