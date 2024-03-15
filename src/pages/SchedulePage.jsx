@@ -23,7 +23,8 @@ function SchedulePage() {
   };
 
   return (
-    <table>
+    <div className='table-container'>
+    <table className='table'>
       <thead>
         <tr>
           <th>Day</th>
@@ -51,6 +52,7 @@ function SchedulePage() {
         </tr>
       </tfoot>
     </table>
+    </div>
   );
 }
 
