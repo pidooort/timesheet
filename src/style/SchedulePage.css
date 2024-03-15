@@ -1,16 +1,19 @@
 /* Table Container */
 .table-container {
-    display: flex;
-    justify-content: center;
-    padding-top: 30px;
+    margin-top: 30px;
+    padding: 100px;
+    margin-bottom: 20px;
   }
+  /*HINDI KO MALAGAY SA CENTER!!!*/ 
   
   /* Table */
   .table {
-    width: 80%; /* Adjust width as needed */
+    width: 70%; /* Adjust width as needed */
     border-collapse: collapse;
     text-align: center; /* Center-align table content */
     font-weight: bold;
+    padding-bottom: 30px;
+    
   }
   
   /* Table Header */
@@ -24,11 +27,13 @@
   /* Table Body */
   .table tbody {
     border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
   }
   
   /* Table Row */
   .table tr {
     background-color: #fff;
+    padding-bottom: 20px;
   }
   
   /* Table Row on Hover */
@@ -38,10 +43,10 @@
   
   /* Input */
   input {
-    padding: 8px;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 100%;
+    width: 50%;
     box-sizing: border-box;
     text-align: center; /* Center-align input */
   }
